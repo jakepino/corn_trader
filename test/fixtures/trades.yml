@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  buyer_id: 1
+  seller_id: 1
+  corn_quantity: 1
+  price: 1
+
+two:
+  buyer_id: 1
+  seller_id: 1
+  corn_quantity: 1
+  price: 1
