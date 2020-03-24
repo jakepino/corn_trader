@@ -1,0 +1,31 @@
+<h1> WELCOME TO CORN TRADER WORLD WIDE </h1>
+
+
+<%if @offers.length>0 %>
+        <ul>
+      <%@offers.to_enum.with_index.reverse_each do |offer,i|%>
+        <li> <%= i+1%>. price: <%=offer.price%>, quantity: <%=offer.corn_quantity%> </li><br>
+      <%end%>
+       </ul>
+    <%else%>
+       <h1>PRAY TO GOD FOR MORE CORN</h1> 
+    <%end%>
+
+<h1>======================offers=========================</h1>
+
+<h1>=======================bids==========================</h1>
+<%if @bids.length>0 %>
+        <ul>
+      <%@bids.each_with_index do |bid,i|%>
+        <li> <%=link_to "<%= i+1%>. price: <%=bid.price%>, quantity: <%=bid.corn_quantity%>", trades_ %> </li><br>
+      <%end%>
+       </ul>
+    <%else%>
+       <h1>NO ONE WANTS TO BUY YOUR PATHETIC CORN</h1> 
+    <%end%>
+
+<h1>=======================================================</h1>
+
+
+
+
