@@ -1,0 +1,23 @@
+<h1>New User</h1>
+<% if flash[:errors] %>
+<% flash[:errors].each do |error|%>
+    <%= error %>
+    <% end %>
+<% end %>
+
+<%= form_for @user do |f| %>
+<%= f.label :name %><br>
+<%= f.text_field :name %><br>
+<%= f.label :email %><br>
+<%= f.email_field :email %><br>
+<%= f.label :amount_of_money %><br>
+<%= f.number_field :amount_of_money %> <br>
+<%= f.label :amount_of_corn %><br>
+<%= f.number_field :amount_of_corn %> <br>
+<%= f.label :password %><br>
+<%= f.password_field :password %> <br>
+<%= f.label :password_confirmation %><br>
+<%= f.password_field :password_confirmation %> <br>
+<%= f.submit "Create Your User Profile" %><br>
+<%= link_to "Already a User?", login_path %>
+<% end %>

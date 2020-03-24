@@ -1,0 +1,14 @@
+<p id=”alert”><%= alert %></p>
+
+<h1>Login</h1>
+
+<%= form_for :session, url: login_path do |f| %>
+<%= f.label :email %><br>
+<%= f.email_field :email %><br>
+<%= f.label :password %><br>
+<%= f.password_field :password %> <br>
+<%= f.label :password_confirmation %><br>
+<%= f.password_field :password_confirmation %> <br>
+<%= f.submit "Sign In" %><br>
+<%= link_to "Need to sign up?", signup_path %>
+<% end %>
