@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_172608) do
+ActiveRecord::Schema.define(version: 2020_03_24_163721) do
 
   create_table "bids", force: :cascade do |t|
     t.integer "user_id"
@@ -41,9 +41,10 @@ ActiveRecord::Schema.define(version: 2020_03_23_172608) do
     t.string "name"
     t.integer "amount_of_corn"
     t.integer "amount_of_money"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
   end
 
 end
