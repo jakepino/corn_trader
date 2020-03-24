@@ -34,3 +34,40 @@
  <%= button_to 'Market Buy', {:controller => "trades",:action=>"market_buy",:user_id=>@user.id,:offer_id=> @offers[0].id}, method: :post %>
 <%end%>
 
+<%=form_for @bid do |f| %>
+price <%=f.number_field :price%>
+quantity<%=f.number_field :corn_quantity%>
+<%= f.hidden_field :user_id, value: @user.id%>
+<%=f.submit%>
+<%end%>
+
+<%=form_for @offer do |f| %>
+price <%=f.number_field :price%>
+quantity<%=f.number_field :corn_quantity%>
+<%= f.hidden_field :user_id, value: @user.id%>
+<%=f.submit%>
+<%end%>
+
+<h1>===================open bids===================</h1>
+    <%if @user.bids%>
+      <% @user.bids.each do |bid|%>
+            <div class="Bids">
+          <span><%= bid.price %></span>
+          <%= button_to "Delete bid",{:controller => "bids",:action=>"destroy_bid",:id=> bid.id,:user_id=>@user.id}, method: :post, data: { confirm: "Really?" } %>
+            </div>
+      <%end%>
+
+    <%end%>
+
+
+
+<h1>===================open offers==================</h1>
+   <%if @user.offers%>
+      <% @user.offers.each do |offer|%>
+            <div class="Offers">
+          <span><%= offer.price %></span>
+          <%= button_to "Delete Offer",{:controller => "offers",:action=>"destroy_offer",:id=> offer.id,:user_id=>@user.id}, method: :post, data: { confirm: "Really?" } %>
+            </div>
+      <%end%>
+
+    <%end%>
