@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     
     def create
         @current_user = User.find_by(email: params[:session][:email])
-      if @current_user && @current_user.authenticate(params[:password])
+      if @current_user && @current_user.authenticate(params[:session][:password])
         session[:user_id] = @current_user.id
         redirect_to markets_path, notice: "Logged in!"
       else
