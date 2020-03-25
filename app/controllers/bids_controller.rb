@@ -4,7 +4,7 @@ class BidsController < ApplicationController
         @user = User.find(params[:bid][:user_id])
         @bid = Bid.create(user_id:params[:bid][:user_id],price:params[:bid][:price],corn_quantity:params[:bid][:corn_quantity])
 
-        redirect_to @user 
+        redirect_to markets_path 
         
     end 
 
@@ -12,7 +12,7 @@ class BidsController < ApplicationController
         @bid = Bid.find(params[:id])
         @user = User.find(params[:user_id])
         @bid.destroy
-        redirect_to @user
+        redirect_to markets_path
     end 
  
 end

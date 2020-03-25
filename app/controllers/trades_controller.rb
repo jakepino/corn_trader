@@ -10,7 +10,7 @@ class TradesController < ApplicationController
           #below updates the user totals 
         buyer.update(amount_of_money:buyer.amount_of_money-total, amount_of_corn:buyer.amount_of_corn+@trade.corn_quantity)
          #refreshes the market
-        redirect_to @user
+        redirect_to markets_path
     end 
 
     def market_buy
@@ -24,6 +24,6 @@ class TradesController < ApplicationController
           #below updates the user totals 
         seller.update(amount_of_money:seller.amount_of_money+total, amount_of_corn:seller.amount_of_corn-@trade.corn_quantity)
          #refreshes the market
-        redirect_to @user
+        redirect_to markets_path
     end 
 end
