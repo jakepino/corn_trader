@@ -1,5 +1,9 @@
-<h1> WELCOME TO CORN TRADER WORLD WIDE <%=@user.name%> </h1>
+<h1> WELCOME TO CORN TRADER WORLD WIDE <%=@user.name.upcase%> </h1>
 
+<% if @current_user %>
+  Logged in as <%= @current_user.email %>.
+  <%= link_to "Log Out", logout_path %>
+<% end %>
 
 <%if @offers.length>0 %>
         <ul>

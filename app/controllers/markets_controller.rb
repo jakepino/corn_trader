@@ -8,6 +8,4 @@ class MarketsController < ApplicationController
        @offer = Offer.new
     end 
      
-    
-
 end
