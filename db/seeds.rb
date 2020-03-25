@@ -8,15 +8,15 @@
 User.destroy_all
 Bid.destroy_all
 Offer.destroy_all
+Trade.destroy_all
 
+Matt = User.create(name:"Matt", amount_of_money:1000,amount_of_corn:1,password:"123456",password_confirmation:"123456",email:"a@gmail.com")
 
-Matt = User.create(name:"Matt", amount_of_money:1000,amount_of_corn:1,password_digest:"123456",password_confirmation:"123456",email:"a@gmail.com")
+Og = User.create(name:"Og", amount_of_money:1000,amount_of_corn:1,password:"123456",password_confirmation:"123456",email:"c@gmail.com")
 
-Og = User.create(name:"Og", amount_of_money:1000,amount_of_corn:1,password_digest:"123456",password_confirmation:"123456",email:"c@gmail.com")
+Cornelius = User.create(name:"Cornelius", amount_of_money:1, amount_of_corn:1000000,password:"123456",password_confirmation:"123456",email:"b@gmail.com")
 
-Cornelius = User.create(name:"Cornelius", amount_of_money:1, amount_of_corn:1000000,password_digest:"123456",password_confirmation:"123456",email:"b@gmail.com")
-
-Billy  = User.create(name:"Billy", amount_of_money:1,amount_of_corn:1000000,password_digest:"123456",password_confirmation:"123456",email:"d@gmail.com")
+Billy  = User.create(name:"Billy", amount_of_money:1,amount_of_corn:1000000,password:"123456",password_confirmation:"123456",email:"d@gmail.com")
 
 
 
