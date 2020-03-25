@@ -1,16 +1,9 @@
-<h1> WELCOME TO CORN TRADER WORLD WIDE </h1>
-<% if current_user %>
-  Logged in as <%= current_user.email %>.
-  <%= link_to “Log Out”, logout_path %>
-<% else %>
-  <%= link_to “Sign Up”, signup_path %> or 
-  <%= link_to “Log In”, login_path %>
-<% end %>
+<h1> WELCOME TO CORN TRADER WORLD WIDE, <%= @user.name.upcase %> </h1>
 
 <%if @offers.length>0 %>
         <ul>
       <%@offers.to_enum.with_index.reverse_each do |offer,i|%>
-        <li> <%= i+1%>. price: <%=offer.price%>, quantity: <%=offer.corn_quantity%> </li><br>
+        <li> <%= i+1%>. price: <%=offer.price%>, quantity: <%=offer.corn_quantity%></li><br>
       <%end%>
        </ul>
     <%else%>
@@ -23,7 +16,7 @@
 <%if @bids.length>0 %>
         <ul>
       <%@bids.each_with_index do |bid,i|%>
-        <li> <%=link_to "<%= i+1%>. price: <%=bid.price%>, quantity: <%=bid.corn_quantity%>", trades_ %> </li><br>
+        <li> <%= i+1%>. price: <%=bid.price%>, quantity: <%=bid.corn_quantity%></li><br>
       <%end%>
        </ul>
     <%else%>
@@ -32,6 +25,11 @@
 
 <h1>=======================================================</h1>
 
-
-
+<h1>your corn total is: <%=@user.amount_of_corn%>       your cash balance is: <%=@user.amount_of_money%></h1>
+<%if @bids.length>0%>
+<%= button_to 'Market Sell', {:controller => "trades",:action=>"market_sell",:user_id=>@user.id,:bid_id=> @bids[0].id}, method: :post %>
+<%end%>
+<%if @offers.length>0%>
+ <%= button_to 'Market Buy', {:controller => "trades",:action=>"market_buy",:user_id=>@user.id,:offer_id=> @offers[0].id}, method: :post %>
+<%end%>
 
