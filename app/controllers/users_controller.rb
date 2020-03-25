@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
       before_action :find_user, only: [:show, :edit, :update, :destroy]
       skip_before_action :logged_in, only: [:new, :create]
+      skip_before_action :current_user, only: [:new, :create]
       def show 
         
        if @current_user.id == params[:id].to_i
