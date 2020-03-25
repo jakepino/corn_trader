@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 2020_03_24_163721) do
     t.integer "amount_of_corn"
     t.integer "amount_of_money"
     t.string "password_digest"
-    t.boolean "bot"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email"

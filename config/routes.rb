@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root to: 'sessions#new'
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
+  post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   post '/trades/sell/:user_id/:bid_id', to: 'trades#market_sell'
   post '/trades/buy/:user_id/:offer_id', to: 'trades#market_buy'
