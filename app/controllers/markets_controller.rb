@@ -6,6 +6,4 @@ class MarketsController < ApplicationController
        @user = @current_user
     end 
      
-    
-
 end
