@@ -7,13 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Matt = User.create(name:"Matt", amount_of_money:1000,amount_of_corn:0,password:"1")
+Matt = User.create(name:"Matt", amount_of_money:1000,amount_of_corn:1,password_digest:"123456",password_confirmation:"123456",email:"a@gmail.com")
 
-Og = User.create(name:"Og", amount_of_money:1000,amount_of_corn:0,password:"1")
+Og = User.create(name:"Og", amount_of_money:1000,amount_of_corn:1,password_digest:"123456",password_confirmation:"123456",email:"c@gmail.com")
 
-Cornelius = User.create(name:"Cornelius", amount_of_money:0, amount_of_corn:1000000, password:"1")
+Cornelius = User.create(name:"Cornelius", amount_of_money:1, amount_of_corn:1000000,password_digest:"123456",password_confirmation:"123456",email:"b@gmail.com")
 
-Billy  = User.create(name:"Billy", amount_of_money:0,amount_of_corn:1000000,password:"1")
+Billy  = User.create(name:"Billy", amount_of_money:1,amount_of_corn:1000000,password_digest:"123456",password_confirmation:"123456",email:"d@gmail.com")
+
+
+
 
 T1 = Trade.create(buyer_id:Og.id ,seller_id:Billy.id,price:10,corn_quantity:100)
 T2 =  Trade.create(buyer_id:Og.id ,seller_id:Billy.id,price:50,corn_quantity:300)
