@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   resources :bids
   resources :users
   resources :markets
-  # resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
+
   root to: 'sessions#new'
-  get '/signup', to: 'users#new', as: 'signup'
-  get '/login/new', to: 'sessions#new', as: 'new_login'
-  post '/login', to: 'sessions#create', as: 'login'
-  delete '/logout', to: 'sessions#destroy', as: 'logout'
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
   post '/trades/sell/:user_id/:bid_id', to: 'trades#market_sell'
   post '/trades/buy/:user_id/:offer_id', to: 'trades#market_buy'
   post '/bids/destroybid/:id/:user_id',to:'bids#destroy_bid'

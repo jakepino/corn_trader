@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-      before_action :find_user, only: [:show, :edit, :update, :delete]
+      before_action :find_user, only: [:show, :edit, :update, :destroy]
       skip_before_action :logged_in, only: [:new, :create]
       def show 
         
@@ -29,7 +29,9 @@ class UsersController < ApplicationController
       end
      end
 
-     def edit
+     def destroy
+        @user.destroy
+        redirect_to login_path
      end
 
      
