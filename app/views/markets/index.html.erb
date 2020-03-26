@@ -1,4 +1,4 @@
-<h1>WELCOME TO CORN TRADER WORLDWIDE, <%= @user.name.upcase %></h1>
+<h1>WELCOME TO CORN TRADER WORLDWIDE, <%= @current_user.name.upcase %></h1>
 <% if @current_user %>
   Logged in as <%= @current_user.email %>.
   <%= link_to "Log Out", logout_path %>

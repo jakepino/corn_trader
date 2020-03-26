@@ -5,6 +5,7 @@ class UsersController < ApplicationController
       def show 
         
        if @current_user.id == params[:id].to_i
+        
          @bids   = Bid.all.sort_by{|offer| offer.price}.reverse
          @offers = Offer.all.sort_by{|offer| offer.price}
          @bid = Bid.new
@@ -38,7 +39,7 @@ class UsersController < ApplicationController
      
     private 
     def user_params
-      params.require(:user).permit(:email, :name, :amount_of_corn, :amount_of_money, :password, :password_confirmation)
+      params.require(:user).permit(:email, :name, :amount_of_corn, :amount_of_money, :password, :password_confirmation,:bot)
     end
 
     def find_user

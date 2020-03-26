@@ -10,22 +10,18 @@ Bid.destroy_all
 Offer.destroy_all
 Trade.destroy_all
 
-Matt = User.create(name:"Matt", amount_of_money:1000,amount_of_corn:1,password:"123456",password_confirmation:"123456",email:"a@gmail.com")
+Matt = User.create(name:"Matt", amount_of_money:1000,amount_of_corn:100000,password:"123456",password_confirmation:"123456",email:"a@gmail.com",bot:true)
 
-Og = User.create(name:"Og", amount_of_money:1000,amount_of_corn:1,password:"123456",password_confirmation:"123456",email:"c@gmail.com")
+Og = User.create(name:"Og", amount_of_money:1000,amount_of_corn:100000,password:"123456",password_confirmation:"123456",email:"c@gmail.com",bot:true)
 
-Cornelius = User.create(name:"Cornelius", amount_of_money:1, amount_of_corn:1000000,password:"123456",password_confirmation:"123456",email:"b@gmail.com")
+Cornelius = User.create(name:"Cornelius", amount_of_money:100000, amount_of_corn:1000000,password:"123456",password_confirmation:"123456",email:"b@gmail.com",bot:true)
 
-Billy  = User.create(name:"Billy", amount_of_money:1,amount_of_corn:1000000,password:"123456",password_confirmation:"123456",email:"d@gmail.com")
-
-
+Billy  = User.create(name:"Billy", amount_of_money:100000,amount_of_corn:1000000,password:"123456",password_confirmation:"123456",email:"d@gmail.com",bot:true)
 
 
-T1 = Trade.create(buyer_id:Og.id ,seller_id:Billy.id,price:10,corn_quantity:100)
-T2 =  Trade.create(buyer_id:Og.id ,seller_id:Billy.id,price:50,corn_quantity:300)
-T3 =  Trade.create(buyer_id:Matt.id ,seller_id:Billy.id,price:10,corn_quantity:20)
-T4 =  Trade.create(buyer_id:Og.id ,seller_id:Billy.id,price:800,corn_quantity:300)
-T5 =  Trade.create(buyer_id:Og.id ,seller_id:Billy.id,price:500,corn_quantity:200)
+
+
+
 
 
 B1=Bid.create( price:60, corn_quantity:10,user_id:Og.id )
