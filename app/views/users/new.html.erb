@@ -1,4 +1,5 @@
 <h1>New User</h1>
+
 <% if flash[:errors] %>
 <% flash[:errors].each do |error|%>
     <%= error %>
@@ -19,6 +20,7 @@
 <%= f.label :password_confirmation %><br>
 <%= f.password_field :password_confirmation %> <br>
 <%= f.submit "Create Your User Profile" %><br>
+<br>
 
 <%= link_to "Already a User?", login_path %>
 <% end %>

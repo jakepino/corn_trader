@@ -1,8 +1,10 @@
 <h1> WELCOME TO CORN TRADER WORLD WIDE <%=@user.name.upcase%> </h1>
 
 <% if @current_user %>
-  Logged in as <%= @current_user.email %>.
-  <%= link_to "Log Out", logout_path %>
+  Logged in as <%= @current_user.email %> <br>
+  <%= link_to "Markets Page", markets_path, :class => "btn btn-primary" %> <br>
+  <%= link_to "Log Out", logout_path%> <br>
+  <%= link_to "Delete Account", user_path(@current_user.id), method: :delete, data: {confirm: "Are you sure?"} %>
 <% end %>
 
 <%if @offers.length>0 %>
@@ -73,5 +75,16 @@ quantity<%=f.number_field :corn_quantity%>
           <%= button_to "Delete Offer",{:controller => "offers",:action=>"destroy_offer",:id=> offer.id,:user_id=>@user.id}, method: :post, data: { confirm: "Really?" } %>
             </div>
       <%end%>
+     <%end%>
 
-    <%end%>
+<ul>
+<li>Your total number of trades is <%= @current_user.total_trades %></li>
+<li>Your total money traded is $<%= @current_user.total_money %></li>
+<li>Your total corn traded is <%= @current_user.total_corn %></li>
+<% if !@current_user.bids.empty? %>
+<li>Your average Bid is <%= @current_user.ave_bid %></li>
+<% end %>
+<% if !@current_user.offers.empty? %>
+<li>Your average Offer is <%= @current_user.ave_offer %></li>
+<% end %>
+</ul>

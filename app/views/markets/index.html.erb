@@ -1,6 +1,7 @@
-<h1>WELCOME TO CORN TRADER WORLDWIDE, <%= @user.name.upcase %></h1>
+<h1>WELCOME TO CORN TRADER WORLD WIDE <%= @user.name.upcase %></h1>
 <% if @current_user %>
-  Logged in as <%= @current_user.email %>.
+  Logged in as <%= @current_user.email %> <br>
+  <%= link_to "Your Profile", user_path(@current_user.id)%> <br>
   <%= link_to "Log Out", logout_path %>
 <% end %>
 <%if @offers.length>0 %>
@@ -27,6 +28,12 @@
     <%end%>
 
 <h1>=======================================================</h1>
+
+<% if flash[:bid] %>
+<h1>The last trade was -$<%= flash[:bid] %></h1>
+<% elsif flash[:offer] %>
+<h1>The last trade was +$<%= flash[:offer] %></h1>
+<% end %>
 
 <h1>your corn total is: <%=@user.amount_of_corn%>       your cash balance is: <%=@user.amount_of_money%></h1>
 <%if @bids.length>0%>
