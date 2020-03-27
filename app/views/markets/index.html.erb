@@ -1,47 +1,116 @@
-<h1>WELCOME TO CORN TRADER WORLDWIDE, <%= @current_user.name.upcase %></h1>
-<% if @current_user %>
-  Logged in as <%= @current_user.email %> <br>
-  <%= link_to "Your Profile", user_path(@current_user.id)%> <br>
-  <%= link_to "Log Out", logout_path %>
-<% end %>
+
+
+<div class="container-fluid">
+
+<h3 style="font-family:Star Jedi;" >WELCoME To CoRN TRADER WoRLD WiDE </h3>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="localhost::3000/markets">Markets</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Profile<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Log Out</a>
+      </li>
+</nav>
+
+
+
+
+<div class = "container-md">
 <%if @offers.length>0 %>
-        <ul>
-      <%@offers.to_enum.with_index.reverse_each do |offer,i|%>
-        <li> <%= i+1%>. price: <%=offer.price%>, quantity: <%=offer.corn_quantity%></li><br>
-      <%end%>
-       </ul>
+      <table class="table table-sm ">
+      
+        <thead>
+        
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+          </tr>
+          
+        </thead>
+        
+        <tbody>
+        
+          <%@offers.to_enum.with_index.reverse_each do |offer,i|%>
+            <tr>
+               <th scope="row"> <%=i+1%> </th>
+               <td class="bg-danger"><%=offer.price%></td> 
+               <td class="bg-danger"><%=offer.corn_quantity%></td>
+            </tr>
+          <%end%>
+        
+        </tbody>
+      
+      </table>
+    
     <%else%>
        <h1>PRAY TO GOD FOR MORE CORN</h1> 
-    <%end%>
+  <%end%>
 
 <h1>======================offers=========================</h1>
 
 <h1>=======================bids==========================</h1>
 <%if @bids.length>0 %>
-        <ul>
+  <table class="table table-sm ">
+      
+        <thead>
+        
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+          </tr>
+          
+        </thead>
+    <tbody>
       <%@bids.each_with_index do |bid,i|%>
-        <li> <%= i+1%>. price: <%=bid.price%>, quantity: <%=bid.corn_quantity%></li><br>
+         
+            <tr>
+               <th scope="row"> <%=i+1%> </th>
+               <td class="bg-success"><%=bid.price%></td> 
+               <td class="bg-success"><%=bid.corn_quantity%></td>
+            </tr>
+      
       <%end%>
-       </ul>
+      
+    </tbody>
+  
+  </table>
+    
     <%else%>
        <h1>NO ONE WANTS TO BUY YOUR PATHETIC CORN</h1> 
-    <%end%>
+<%end%>
 
 <h1>=======================================================</h1>
 
-<% if flash[:bid] %>
-<h1>The last trade was -$<%= flash[:bid] %></h1>
-<% elsif flash[:offer] %>
-<h1>The last trade was +$<%= flash[:offer] %></h1>
-<% end %>
+</div>
+
+The most recent trade was <%=Trade.all.reverse[0].corn_quantity%> cobs @  $<%=Trade.all.reverse[0].price%>
 
 <h1>your corn total is: <%=@user.amount_of_corn%>       your cash balance is: <%=@user.amount_of_money%></h1>
-<%if @bids.length>0%>
-<%= button_to 'Market Sell', {:controller => "trades",:action=>"market_sell",:user_id=>@user.id,:bid_id=> @bids[0].id}, method: :post %>
-<%end%>
-<%if @offers.length>0%>
- <%= button_to 'Market Buy', {:controller => "trades",:action=>"market_buy",:user_id=>@user.id,:offer_id=> @offers[0].id}, method: :post %>
-<%end%>
+
+<div  style="text-align: center;">
+  <%if @bids.length>0 && @offers.length>0 %>
+  
+  <%= button_to 'Market Buy', {:controller => "trades",:action=>"market_buy",:user_id=>@user.id,:offer_id=> @offers[0].id}, method: :post, class:"btn btn-success btn-lg "%>
+  <%= button_to 'Market Sell', {:controller => "trades",:action=>"market_sell",:user_id=>@user.id,:bid_id=> @bids[0].id}, method: :post, class:"btn btn-danger btn-lg  "%>
+  
+  <%elsif @offers.length>0%>
+  <%= button_to 'Market Buy', {:controller => "trades",:action=>"market_buy",:user_id=>@user.id,:offer_id=> @offers[0].id}, method: :post, class:"btn btn-success btn-lg  text-center"%>
+  
+  <%elsif @bids.length > 0 %>
+  <%= button_to 'Market Sell', {:controller => "trades",:action=>"market_sell",:user_id=>@user.id,:bid_id=> @bids[0].id}, method: :post, class:"btn btn-danger btn-lg  text-center"%>
+  
+  <%end%>
+
+</div>
 
 <%=form_for @bid do |f| %>
 price <%=f.number_field :price%>
@@ -80,3 +149,5 @@ quantity<%=f.number_field :corn_quantity%>
       <%end%>
 
     <%end%>
+
+</div>

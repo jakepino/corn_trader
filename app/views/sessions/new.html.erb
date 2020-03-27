@@ -1,13 +1,20 @@
 <p id=”alert”><%= alert %></p>
 
-<h1>Login</h1>
+<div class="jumbotron" style="text-align: center;">
+<h1 style="font-family:Star Jedi;">CoRN TRADER WoRLD WiDE </h1>
+</div>
+
+<div style= "text-align: center;">
+<h3>Login</h3>
 
 <%= form_for :session, url: login_path do |f| %>
 <%= f.label :email %><br>
 <%= f.email_field :email %><br>
 <%= f.label :password %><br>
 <%= f.password_field :password %> <br>
+<br>
 <%= f.submit "Sign In" %><br>
 <br>
 <%= link_to "New User?", signup_path %>
 <% end %>
+</div>
