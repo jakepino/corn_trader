@@ -91,9 +91,11 @@
 <h1>=======================================================</h1>
 
 </div>
-
-The most recent trade was <%=Trade.all.reverse[0].corn_quantity%> cobs @  $<%=Trade.all.reverse[0].price%>
-
+<% if Trade.all.reverse[0].price < Trade.all.reverse[1].price %>
+<h1 class="text-success">The most recent trade was <%=Trade.all.reverse[0].corn_quantity%> cobs @  $<%=Trade.all.reverse[0].price%></h1>
+<% else %>
+<h1 class="text-danger">The most recent trade was <%=Trade.all.reverse[0].corn_quantity%> cobs @  $<%=Trade.all.reverse[0].price%></h1>
+<% end %>
 <h1>your corn total is: <%=@user.amount_of_corn%>       your cash balance is: <%=@user.amount_of_money%></h1>
 
 <div  style="text-align: center;">
