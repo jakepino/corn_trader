@@ -1,6 +1,6 @@
 
 
-<div class="container-fluid">
+<div class="container-fluid text-center">
 
 <h3 style="font-family:Star Jedi;" >WELCoME To CoRN TRADER WoRLD WiDE </h3>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -57,6 +57,7 @@
 <h1>======================offers=========================</h1>
 
 <h1>=======================bids==========================</h1>
+
 <%if @bids.length>0 %>
   <table class="table table-sm ">
       
@@ -98,12 +99,16 @@
 <% end %>
 <h1>your corn total is: <%=@user.amount_of_corn%>       your cash balance is: <%=@user.amount_of_money%></h1>
 
-<div  class = "row",style="text-align: center;">
+<div  class="mx-auto text-center">
   <%if @bids.length>0 && @offers.length>0 %>
-  
-  <%= button_to 'Market Buy', {:controller => "trades",:action=>"market_buy",:user_id=>@user.id,:offer_id=> @offers[0].id}, method: :post, class:"btn btn-success btn-lg text-center"%>
-  <%= button_to 'Market Sell', {:controller => "trades",:action=>"market_sell",:user_id=>@user.id,:bid_id=> @bids[0].id}, method: :post, class:"btn btn-danger btn-lg text-center "%>
-  
+  <div class="row">
+     <div class="col  text-right">
+        <%= button_to 'Market Buy', {:controller => "trades",:action=>"market_buy",:user_id=>@user.id,:offer_id=> @offers[0].id}, method: :post, class:"btn btn-success btn-lg text-center"%>
+     </div>
+     <div class="col">
+         <%= button_to 'Market Sell', {:controller => "trades",:action=>"market_sell",:user_id=>@user.id,:bid_id=> @bids[0].id}, method: :post, class:"btn btn-danger btn-lg text-center "%>
+      </div>
+  </div> 
   <%elsif @offers.length>0%>
   <%= button_to 'Market Buy', {:controller => "trades",:action=>"market_buy",:user_id=>@user.id,:offer_id=> @offers[0].id}, method: :post, class:"btn btn-success btn-lg  text-center"%>
   
@@ -131,7 +136,7 @@ quantity<%=f.number_field :corn_quantity%>
 <div class="card">
   <div class="card-body">
   <h5 class="card-header text-center">Current Submitted Bids</h5  
-  </div>
+</div>
 <%if @user.bids%>
   <table class="table table-hover">
   <thead class="thead-light">
