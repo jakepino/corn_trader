@@ -47,7 +47,7 @@ class MarketsController < ApplicationController
 
  def bot_market 
   
-     bots = User.all.select{|user| user.bot == true}
+   bots = User.all.select{|user| user.bot == true}
      
     bots.each do |bot|
      if Offer.all.length>0 && Bid.all.length>0
