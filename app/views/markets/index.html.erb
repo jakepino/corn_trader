@@ -96,11 +96,11 @@ The most recent trade was <%=Trade.all.reverse[0].corn_quantity%> cobs @  $<%=Tr
 
 <h1>your corn total is: <%=@user.amount_of_corn%>       your cash balance is: <%=@user.amount_of_money%></h1>
 
-<div  style="text-align: center;">
+<div  class = "row",style="text-align: center;">
   <%if @bids.length>0 && @offers.length>0 %>
   
-  <%= button_to 'Market Buy', {:controller => "trades",:action=>"market_buy",:user_id=>@user.id,:offer_id=> @offers[0].id}, method: :post, class:"btn btn-success btn-lg "%>
-  <%= button_to 'Market Sell', {:controller => "trades",:action=>"market_sell",:user_id=>@user.id,:bid_id=> @bids[0].id}, method: :post, class:"btn btn-danger btn-lg  "%>
+  <%= button_to 'Market Buy', {:controller => "trades",:action=>"market_buy",:user_id=>@user.id,:offer_id=> @offers[0].id}, method: :post, class:"btn btn-success btn-lg text-center"%>
+  <%= button_to 'Market Sell', {:controller => "trades",:action=>"market_sell",:user_id=>@user.id,:bid_id=> @bids[0].id}, method: :post, class:"btn btn-danger btn-lg text-center "%>
   
   <%elsif @offers.length>0%>
   <%= button_to 'Market Buy', {:controller => "trades",:action=>"market_buy",:user_id=>@user.id,:offer_id=> @offers[0].id}, method: :post, class:"btn btn-success btn-lg  text-center"%>
@@ -126,28 +126,55 @@ quantity<%=f.number_field :corn_quantity%>
 <%=f.submit%>
 <%end%>
 
-<h1>===================open bids===================</h1>
-    <%if @user.bids%>
+<div class="card">
+  <div class="card-body">
+  <h5 class="card-header text-center">Current Submitted Bids</h5  
+  </div>
+<%if @user.bids%>
+  <table class="table table-hover">
+  <thead class="thead-light">
+    <tr>
+        <th scope="col">Price in $</th>
+        <th scope="col">Quantity</th>
+        <th scope="col"></th>
+    </tr>
+ </thead>
+    <tbody>
       <% @user.bids.each do |bid|%>
-            <div class="Bids">
-          <span><%= bid.price %></span>
-          <%= button_to "Delete bid",{:controller => "bids",:action=>"destroy_bid",:id=> bid.id,:user_id=>@user.id}, method: :post, data: { confirm: "Really?" } %>
-            </div>
-      <%end%>
+            <tr>
+                <td><%= bid.price %></td>
+                <td><%= bid.corn_quantity%></td>
+                <td><%= button_to "Delete bid",{:controller => "bids",:action=>"destroy_bid",:id=> bid.id,:user_id=>@user.id}, method: :post, data: { confirm: "Really?" }, :class => "btn btn-danger btn-sm" %></td>
+            </tr>
+            <% end %>
+ <%end%>
+    </tbody>
+</table>
+</div>
 
-    <%end%>
-
-
-
-<h1>===================open offers==================</h1>
-   <%if @user.offers%>
+<div class="card">
+  <div class="card-body">
+  <h5 class="card-header text-center">Current Submitted Offers</h5  
+  </div>
+<%if @user.offers%>
+  <table class="table table-hover">
+  <thead class="thead-light">
+    <tr>
+        <th scope="col">Price in $</th>
+        <th scope="col">Quantity</th>
+        <th scope="col"></th>
+    </tr>
+ </thead>
+    <tbody>
       <% @user.offers.each do |offer|%>
-            <div class="Offers">
-          <span><%= offer.price %></span>
-          <%= button_to "Delete Offer",{:controller => "offers",:action=>"destroy_offer",:id=> offer.id,:user_id=>@user.id}, method: :post, data: { confirm: "Really?" } %>
-            </div>
-      <%end%>
-
-    <%end%>
+            <tr>
+                <td><%= offer.price %></td>
+                <td><%= offer.corn_quantity%></td>
+                <td><%= button_to "Delete Offer",{:controller => "offers",:action=>"destroy_offer",:id=> offer.id,:user_id=>@user.id}, method: :post, data: { confirm: "Really?" }, :class => "btn btn-danger btn-sm" %></td>
+            </tr>
+            <% end %>
+ <%end%>
+    </tbody>
+</table>
 
 </div>
