@@ -22,6 +22,16 @@ class User < ApplicationRecord
         trade_arr << Trade.all.find_all {|bid| bid.seller_id == self.id}
         trade_arr.flatten
     end
+
+    def recent_trade
+        trade = self.trades.sort.last
+        if trade.buyer_id == self.id
+            "You recently bought #{trade.corn_quantity} cobs @ $#{trade.price}"
+        else
+            "You recently sold #{trade.corn_quantity} cobs @ $#{trade.price}"
+        end
+    end
+
     def total_trades
        self.trades.count
     end

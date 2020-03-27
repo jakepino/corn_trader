@@ -21,6 +21,7 @@
   <li class= "text-center">Your total number of trades is <%= @current_user.total_trades %></li>
   <li class= "text-center">Your total money traded is $<%= @current_user.total_money %></li>
   <li class= "text-center">Your total corn traded is <%= @current_user.total_corn %></li>
+  <li class= "text-center"><%= @current_user.recent_trade %></li>
   <% if !@current_user.bids.empty? %>
     <li class= "text-center">Your average Bid is <%= @current_user.ave_bid %></li>
   <% end %>
