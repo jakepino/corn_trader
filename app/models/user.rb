@@ -46,7 +46,7 @@ class User < ApplicationRecord
 
     def ave_offer
         all_offers = self.offers
-        ave = all_offers.reduce(:+)/all_offers.count
+        ave = all_offers.reduce(0){|sum, offer| sum + offer.price}/all_offers.length
         ave
     end
 end

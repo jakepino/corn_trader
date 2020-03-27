@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_163721) do
+ActiveRecord::Schema.define(version: 2020_03_27_143528) do
 
   create_table "bids", force: :cascade do |t|
     t.integer "user_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_163721) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email"
+    t.boolean "bots"
   end
 
 end
