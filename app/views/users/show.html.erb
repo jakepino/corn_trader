@@ -16,16 +16,16 @@
 <div class="card">
   <div class="card-body">
   <h5 class="card-header text-center">Account Status</h5>
-  <h3>your corn total is: <%=@user.amount_of_corn%></h3>
-  <h3>your cash balance is: $<%=@user.amount_of_money%></h3>
-  <li>Your total number of trades is <%= @current_user.total_trades %></li>
-  <li>Your total money traded is $<%= @current_user.total_money %></li>
-  <li>Your total corn traded is <%= @current_user.total_corn %></li>
+  <h3 class= "text-center">Your corn total is: <%=@user.amount_of_corn%> husks</h3>
+  <h3 class= "text-center">Your cash balance is: $<%=@user.amount_of_money%></h3>
+  <li class= "text-center">Your total number of trades is <%= @current_user.total_trades %></li>
+  <li class= "text-center">Your total money traded is $<%= @current_user.total_money %></li>
+  <li class= "text-center">Your total corn traded is <%= @current_user.total_corn %></li>
   <% if !@current_user.bids.empty? %>
-    <li>Your average Bid is <%= @current_user.ave_bid %></li>
+    <li class= "text-center">Your average Bid is <%= @current_user.ave_bid %></li>
   <% end %>
   <% if !@current_user.offers.empty? %>
-    <li>Your average Offer is <%= @current_user.ave_offer %></li>
+    <li class= "text-center">Your average Offer is <%= @current_user.ave_offer %></li>
   <% end %>
 </ul>
   </div>
